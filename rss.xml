@@ -10,8 +10,23 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sun, 25 Jul 2021 11:38:00 +0800</pubDate>
-        <lastBuildDate>Sun, 25 Jul 2021 11:38:00 +0800</lastBuildDate>
+        <pubDate>Sun, 25 Jul 2021 11:51:26 +0800</pubDate>
+        <lastBuildDate>Sun, 25 Jul 2021 11:51:26 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2021/07/25/pic-test/</guid>
+            <title>pic_test</title>
+            <link>http://example.com/2021/07/25/pic-test/</link>
+            <pubDate>Sun, 25 Jul 2021 11:51:26 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;这里测试以下图片的效果&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这里测试以下图片的效果&#34;&gt;#&lt;/a&gt; 这里测试以下图片的效果&lt;/h1&gt;
+&lt;p&gt;&lt;img data-src=&#34;/2021/07/25/pic-test/example.png&#34; class=&#34;&#34; title=&#34;This is an example image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;恩效果很不错，使用方法和 markdown 语法有些许的差别，使用下面的语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123;% asset_path slug %&amp;#125;
+&amp;#123;% asset_img slug [title] %&amp;#125;
+&amp;#123;% asset_link slug [title] %&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;slug 是你要添加的图片名称&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2021/07/25/The-first-page-1/</guid>
             <title>The first page</title>
