@@ -12,7 +12,11 @@
             "title": "pic_test",
             "date_published": "2021-07-25T03:51:26.000Z",
             "content_html": "<h1 id=\"这里测试以下图片的效果\"><a class=\"anchor\" href=\"#这里测试以下图片的效果\">#</a> 这里测试以下图片的效果</h1>\n<p><img data-src=\"/2021/07/25/pic-test/example.png\" class=\"\" title=\"This is an example image\"></p>\n<p>恩效果很不错，使用方法和 markdown 语法有些许的差别，使用下面的语法：</p>\n<pre><code>&#123;% asset_path slug %&#125;\n&#123;% asset_img slug [title] %&#125;\n&#123;% asset_link slug [title] %&#125;\n</code></pre>\n<p>slug 是你要添加的图片名称</p>\n",
-            "tags": []
+            "tags": [
+                "hexo",
+                "hexo",
+                "test"
+            ]
         },
         {
             "id": "http://example.com/2021/07/25/The-first-page-1/",
