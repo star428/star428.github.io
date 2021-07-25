@@ -2535,6 +2535,18 @@ main >.inner {
 .social .item.about i {
   color: #3b5998;
 }
+.social .item.email::before {
+  background-color: #55acd5;
+}
+.social .item.email i {
+  color: #55acd5;
+}
+.social .item.stackoverflow::before {
+  background-color: #e60026;
+}
+.social .item.stackoverflow i {
+  color: #e60026;
+}
 .social .item:focus i,
 .social .item:hover i {
   color: var(--grey-0);
