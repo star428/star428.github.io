@@ -20,23 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="star428&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+    <meta name="description" content="最近在学习 c++（其实是复习），总想着要把学过的某些东西稍加记忆，要不然每次查询网页速度实在堪忧，思来想去还是得有一个自己的博客记录一下重要的技能，以便下次查阅。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo博客搭建">
+<meta property="og:url" content="http://example.com/2023/01/09/hexo-md/index.html">
 <meta property="og:site_name" content="star428&#39;s Blog">
+<meta property="og:description" content="最近在学习 c++（其实是复习），总想着要把学过的某些东西稍加记忆，要不然每次查询网页速度实在堪忧，思来想去还是得有一个自己的博客记录一下重要的技能，以便下次查阅。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-09T09:06:10.000Z">
+<meta property="article:modified_time" content="2023-01-09T10:28:16.811Z">
 <meta property="article:author" content="star428">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/archives/2023/">
+<link rel="canonical" href="http://example.com/2023/01/09/hexo-md/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2023/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/01/09/hexo-md/","path":"2023/01/09/hexo-md/","title":"hexo博客搭建"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | star428's Blog</title>
+<title>hexo博客搭建 | star428's Blog</title>
   
 
 
@@ -70,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">star428's Blog</h1>
+      <p class="site-title">star428's Blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -123,7 +128,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -136,6 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-hexo-github-pages-%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">基于 hexo + github pages 的静态博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%BF%85%E9%A1%BB%E9%A1%B9"><span class="nav-number">1.1.</span> <span class="nav-text">下载必须项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.</span> <span class="nav-text">hexo 文件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-github-%E8%BF%81%E7%A7%BB"><span class="nav-number">1.3.</span> <span class="nav-text">使用 github 迁移</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -180,70 +186,127 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 2 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/09/hexo-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="star428">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="star428's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="hexo博客搭建 | star428's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hexo博客搭建
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
+
+      <time title="创建时间：2023-01-09 17:06:10 / 修改时间：18:28:16" itemprop="dateCreated datePublished" datetime="2023-01-09T17:06:10+08:00">2023-01-09</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近在学习 c++（其实是复习），总想着要把学过的某些东西稍加记忆，要不然每次查询网页速度实在堪忧，思来想去还是得有一个自己的博客记录一下重要的技能，以便下次查阅。</p>
+<span id="more"></span>
+
+<h2 id="基于-hexo-github-pages-的静态博客搭建"><a href="#基于-hexo-github-pages-的静态博客搭建" class="headerlink" title="基于 hexo + github pages 的静态博客搭建"></a>基于 hexo + github pages 的静态博客搭建</h2><p>其实博客搭建有个问题，就是如果自己折腾的话迁移性其实一般，因为东西会越加越多，到最后想迁移的时候就会感觉无从下手。而且后面如果有服务器的话就更不必要了。有更好的选择，这里我们仅仅讨论如何迁移目前已有的东西。(阅读本文的前置条件是去找怎么搭一个最简单的 hexo 静态博客)</p>
+<p>后续分为四个方面简单介绍 hexo 文件格式和怎么迁移</p>
+<ul>
+<li><strong><em>下载必须项</em></strong></li>
+<li><strong><em>hexo 文件介绍</em></strong></li>
+<li><strong><em>使用 github 迁移</em></strong></li>
+</ul>
+<h3 id="下载必须项"><a href="#下载必须项" class="headerlink" title="下载必须项"></a>下载必须项</h3><p>其实对于不想仔细研究 hexo 内部构成，只想使用博客写作的人而言，其实关注点并不是多么花里胡哨的界面（越花越难以迁移，同时会消耗大量精力），私以为博客的重点在于文章质量而不在于博客多么的花哨，简介大方即可。</p>
+<p>首先使用 hexo，最好的学习方式是去官网看完最简单的使用示例，其实 hexo 只有两个东西需要下载，<code>Node.js</code>和<code>git</code>即可，这里不再赘述如何下载，参照 hexo 官网（<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">hexo</a>）即可下载完成（已有的不必再复制粘贴产生网络垃圾，重要的是解决问题的逻辑）</p>
+<p>下载完成后其实就要初始化等等操作，anyway，为了简化流程我也把整体的博客代码移到 github 上，这样下次迁移很方便只需要<code>git clone</code>即可</p>
+<h3 id="hexo-文件介绍"><a href="#hexo-文件介绍" class="headerlink" title="hexo 文件介绍"></a>hexo 文件介绍</h3><p>其实 hexo 也没有那么神秘，强大的其实是 github pages，我们可以将静态网页托管到 github pages 上，github 会给你一个域名叫做<code>yourName.github.io</code>，使用这个域名就可以访问放在你这个仓库中的静态网页，而 hexo 呢就是可以帮助你生成这个网页。你只需要写好 markdown，hexo 会帮助你生成静态网页。</p>
+<p>后面会介绍相关的 hexo 如何生成的语句，这里我们先介绍一下结构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- public // 存放你真正生成的静态网页的地方</span><br><span class="line">- <span class="built_in">source</span></span><br><span class="line">  - _data // 存放自定义网页格式，可以修改网页圆角等等</span><br><span class="line">  - _post // 存放你真正博客的地方</span><br><span class="line">  - others // 你定义了tags，categories等等都会生成新文件夹</span><br><span class="line"></span><br><span class="line">- config.yml // 改变系统设置的地方</span><br><span class="line">- config.next.yml // 改变next风格的地方（将themes/next里面的config.yml粘贴出来即可，这个文件的优先级比里面的要高会替代同时不会污染原有config）</span><br></pre></td></tr></table></figure>
+
+<p>其实大部分修改修改的都是 config.next.yml 里面的东西，anyway 这里怎么修改大可以去自己找好玩的，这里不想对怎么修改长篇大论，没有过多意义，因为我的修改也是从别人那里学来的没有多少创新，这里 po 出来我的相关借鉴文章：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ywang-wnlo/p/Hexo-NexT.html">next 主题的配置使用记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/280784973">nexT 主题更改背景图片和边框圆角</a></p>
+<p><a target="_blank" rel="noopener" href="https://hexo-next.readthedocs.io/zh_CN/latest/next/advanced/%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/">hexo 添加动态背景</a></p>
+<h3 id="使用-github-迁移"><a href="#使用-github-迁移" class="headerlink" title="使用 github 迁移"></a>使用 github 迁移</h3><p>其实实现也很简单，就是把你使用<code>hexo init</code>生成的所有文件全部放到 github 上而已，此时如果迁移可以使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:star428/hexo_Blog_container.git</span><br></pre></td></tr></table></figure>
+
+<p>结束，此时已经迁移完毕，使用如下语句进行初始化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean // 清除生成的网页</span><br><span class="line">hexo g     // 重新生成hexo网页</span><br><span class="line">hexo s     // 在本地预览网页</span><br><span class="line">hexo d     // 推送网页到yourName.github.io上去</span><br></pre></td></tr></table></figure>
+
+<p>最终网页的展示（也不用展示了所见即所得哈哈哈哈哈）<br>over，下一篇文章见~</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-01-09T17:06:10+08:00"
-              content="2023-01-09">
-          01-09
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/01/09/hexo-md/" itemprop="url">
-            <span itemprop="name">hexo博客搭建</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/09/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-01-09T11:28:39+08:00"
-              content="2023-01-09">
-          01-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/01/09/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
 
+
+
+
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -319,7 +382,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"star428","repo":"star428.github.io","client_id":"f65f75f2c8a7ed10e7a0","client_secret":"b1ca52b255139821d3f3bd1abe01c6b5e59d390c","admin_user":"star428","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"60e0f3aedd2bd6bf8ed30f7e481b700b"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"star428","repo":"star428.github.io","client_id":"f65f75f2c8a7ed10e7a0","client_secret":"b1ca52b255139821d3f3bd1abe01c6b5e59d390c","admin_user":"star428","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f25f2500e7b226bf440ad499adeaff75"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
