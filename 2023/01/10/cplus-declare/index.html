@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":true,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Hi！what’s up guys!😃 终于结束了网站搭建，哦虽然新增了许多新功能比如上面这个笑脸哈哈哈哈哈。这篇文章简要讨论下 c++或者 c 语言中一个很有趣的问题，什么是声明（declare）或者什么是定义（define）？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++ 中声明（Declare）与定义（define）">
+<meta property="og:url" content="http://example.com/2023/01/10/cplus-declare/index.html">
+<meta property="og:site_name" content="star428&#39;s Blog">
+<meta property="og:description" content="Hi！what’s up guys!😃 终于结束了网站搭建，哦虽然新增了许多新功能比如上面这个笑脸哈哈哈哈哈。这篇文章简要讨论下 c++或者 c 语言中一个很有趣的问题，什么是声明（declare）或者什么是定义（define）？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-10T11:43:10.000Z">
+<meta property="article:modified_time" content="2023-01-10T13:57:41.922Z">
+<meta property="article:author" content="star428">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/01/10/cplus-declare/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/01/10/cplus-declare/","path":"2023/01/10/cplus-declare/","title":"c++ 中声明（Declare）与定义（define）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>c++ 中声明（Declare）与定义（define） | star428's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/star428/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">star428's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#c-%E4%B8%AD%E5%A3%B0%E6%98%8E%EF%BC%88Declare%EF%BC%89%E4%B8%8E%E5%AE%9A%E4%B9%89%EF%BC%88define%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">c++中声明（Declare）与定义（define）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%A3%B0%E6%98%8E%EF%BC%88declare%EF%BC%89%E5%92%8C%E5%AE%9A%E4%B9%89%EF%BC%88define%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">为什么需要声明（declare）和定义（define）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%EF%BC%8C%E5%AE%9A%E4%B9%89%EF%BC%8C%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%8C%E8%B5%8B%E5%80%BC"><span class="nav-number">1.1.1.</span> <span class="nav-text">声明，定义，初始化，赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">赋值和初始化</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="star428"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">star428</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/star428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;star428" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/yewang863@gmail.com" title="E-Mail → yewang863@gmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/10/cplus-declare/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="star428">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="star428's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="c++ 中声明（Declare）与定义（define） | star428's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          c++ 中声明（Declare）与定义（define）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-10 19:43:10 / 修改时间：21:57:41" itemprop="dateCreated datePublished" datetime="2023-01-10T19:43:10+08:00">2023-01-10</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Hi！what’s up guys!😃 终于结束了网站搭建，哦虽然新增了许多新功能比如上面这个笑脸哈哈哈哈哈。这篇文章简要讨论下 c++或者 c 语言中一个很有趣的问题，什么是声明（declare）或者什么是定义（define）？</p>
+<span id="more"></span>
+<h2 id="c-中声明（Declare）与定义（define）">c++中声明（Declare）与定义（define）</h2>
+<p>有些想法比如哦，我写出一些变量或者函数或者类的形式,我不给他们给出赋值或者实际的一些定义（这里就给出定义了哈哈哈哈哈很好理解的名词），比如下面：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a; \\ define</span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> a; \\ <span class="function">declare</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">addInt</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>; \\ declare</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>; \\declare</span><br></pre></td></tr></table></figure>
+<p>anyway,里面有一些答案是我们可能以前理解的不对的，啊<code>int a</code>怎么能是<code>define</code>捏，当然这些都和编译器有关系，定义就比较好看出来了就不列举了。</p>
+<p>其实说到 declare 和 define，其实还有几个词赋值和初始化我们也常听到。当然有这些问题都是因为<code>c</code>或<code>c++</code>都是编译型语言，区别于解释型语言那么他们都需要<strong>编译</strong>，那么哦，编译，那么这些问题就藏在<strong>编译原理</strong>中，就应该在<strong>编译器的输出</strong>上。</p>
+<p>那么我们分这几个来讨论：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>为什么需要声明（declare）和定义（define）</p>
+</li>
+<li class="lvl-2">
+<p>声明，定义，初始化，赋值</p>
+</li>
+</ul>
+<h3 id="为什么需要声明（declare）和定义（define）">为什么需要声明（declare）和定义（define）</h3>
+<p>当然这部分内容不是我写的 hhhh，看到有一篇很好的知乎回答（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/27639400">变量的声明、定义、赋值和初始化有什么区别？</a>）。这里只摘录出关键信息。</p>
+<p>所有程序均是文件，程序员选择文件去编写程序。</p>
+<p>人和文件要到达机器那边，那么需要编译器这座桥梁。</p>
+<p>但是大型的程序会被组织成多个文件，文件一多便给编译带来难题。文件要最终翻译成程序（机器码 01），但是这些文件的数目会很多也会很少。</p>
+<p>代码是组织在多个文件中的，编译器为了解决这个问题，很自然的提出了两个概念：</p>
+<p>声明：<code>Declarations</code>定义：<code>·Definitions</code></p>
+<blockquote>
+<p>一个变量或者函数在内存中只能存在一份，所以在代码中它只能在一个地方<strong>登场</strong>！<strong>这就是定义</strong></p>
+</blockquote>
+<blockquote>
+<p>而这个变量或者函数可能被多个文件使用，在每个文件中都要登场，也就是每个文件中都要被定义，怎么解决这个内存浪费的矛盾呢，<strong>这就是声明存在的意义</strong></p>
+</blockquote>
+<p>这里其实也关乎到编译原理的相关知识，从<code>预处理</code>到<code>编译</code>到<code>汇编</code>(有时候统称为 <code>compiler</code>过程，直接一步到位到机器码了 hhhhhhh)最后到 <code>linking</code> 这一系列的过程，anyway 这些我们不讨论了 hhhhhh（说实话就我这水平也谈论不了这个只能谈论些简单的东西哈哈哈哈哈，这些东西过于专业需要请编译器专家来谈谈），有时候你会非常想知道这些东西是怎么实现的，你了解这些东西的深度也是螺旋上升的一种状态，当然最终不会彻底了解的，能说服自己就好。</p>
+<h4 id="声明，定义，初始化，赋值">声明，定义，初始化，赋值</h4>
+<p>还是这篇文章内容（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/27639400">变量的声明、定义、赋值和初始化有什么区别？</a>），我们通过编译器输出和相关示例来简单说说什么是<s>快乐星球</s>声明（declare）（当然动词名词你随意使用 hhhhhh）</p>
+<h5 id="声明">声明</h5>
+<p>这里首先给出我的一般 c++编写用的方式，我一般的开发使用<code>vscode</code> + <code>gcc</code> + <code>gdb</code>,大工程就使用<code>cmake</code>辽（还在学还在学别骂了），先看第一个示例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  a = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>OK,大家都知道这段代码绝壁运行不起来，看起来就像 python 的程序员重新开始回忆自己大一学过的 c 或者 c++知识但是忘记相关语法一样，送佛送到西，必须碰一下编译器这个南墙：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ g++ Main.cpp -o main</span><br><span class="line"></span><br><span class="line">Main.cpp: In <span class="keyword">function</span> ‘int main()’:</span><br><span class="line">Main.cpp:3:3: error: ‘a’ was not declared <span class="keyword">in</span> this scope</span><br><span class="line">    3 |   a = 10;</span><br><span class="line">      |   ^</span><br></pre></td></tr></table></figure>
+<p>好翻译一下，未在此范围内声明，这里有两个我们想注意的点，第一个**<em>此范围</em>**，很可怕吗，是的很可怕。这里提到的其实声明范围，好想了解的可以看这篇 Microsoft 的文章（<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/cpp/declarations-and-definitions-cpp?view=msvc-170">declare and define</a>）。</p>
+<p>第二点就是我们关注的声明了，所以声明我们怎么用一句话来简单说说让人彻底理解呢？（可能也确实得自己悟 hhhh）</p>
+<blockquote>
+<p>声明：是指出存储类型，并给存储单元指定名称。</p>
+</blockquote>
+<p>ok 结束，这里辅佐一些自己理解 hhhh，之前我们讨论过为什么要有声明和定义，那么 c 或者 c++其实它的函数都会定义参数形参类型，也有返回类型，那么其实对于一个函数而言怎么实现的，我们可以不知道，但是这个函数干什么，我们看了函数这个头我们就可以知道，这是其他语言（就是你！别看别人了 python）所不能比拟的。</p>
+<h5 id="定义">定义</h5>
+<p>看这段代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> a;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ g++ Main.cpp -o main</span><br><span class="line"></span><br><span class="line">/usr/bin/ld: /tmp/ccSLBdnB.o: <span class="keyword">in</span> <span class="keyword">function</span> `main<span class="string">&#x27;:</span></span><br><span class="line"><span class="string">Main.cpp:(.text+0xa): undefined reference to `a&#x27;</span></span><br><span class="line">collect2: error: ld returned 1 <span class="built_in">exit</span> status</span><br></pre></td></tr></table></figure>
+<p>这里又要提到<code>extern</code>，首先我不想过多解释，<code>c++</code>有一个不好处就是许多东西要记得很多但是其实很少会用到（但是<code>extern</code>会频繁用到 hhhh），我们不想去讨论茴香豆的茴有几种写法，这没有意义，我们只是简单解释一下这里的 <code>extern</code></p>
+<p>这里的 extern 就是表示，哦我这个东西现在就是声明，定义得去其他地方找，（无论在本文件或者其他文件中找，在 linking 的时候）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> a;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a; <span class="comment">// 在本文件中一定义，也行，这句就是定义</span></span><br></pre></td></tr></table></figure>
+<p>当然你编译的时候只编译一个文件，所以编译器会告诉你，骗子外面哪里有这个的定义。</p>
+<p>ok 代码解释结束，我们看一下报错，翻译一下就是，a 的引用竟然没有定义，哦又要提到引用和指针了，这里和我们说的引用和指针不同，这里就是再说 a 要引用一个内存单元，但是这个内存单元没有定义（为什么要引用别的内存单元不自己分配？因为你使用了 extern 关键字）</p>
+<p>ok，一句话解释什么是定义：</p>
+<blockquote>
+<p>定义：是分配内存空间，还可为变量指定初始值。</p>
+</blockquote>
+<p>一般我们关注的都是指定初始值，其实这个还有一种情况就是分配内存空间，这就很好解释为什么<code>int a</code>也是定义，而不是声明</p>
+<h5 id="赋值和初始化">赋值和初始化</h5>
+<p>这个问题，非常复杂，简单的说，我不太会。不过别急，请参考这篇博文 hhhhh（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42518941/article/details/112326108">你真的理解 c++中初始化和赋值这两个概念吗？</a>）挑重点的说，注意下面这个描述</p>
+<blockquote>
+<p>在 c++中，我们常用的 int、float 这些基本数据类型，其实就是语言开发者编写的一个个复杂的类。所谓对象的<strong>初始化</strong>，就是在创建这个对象的时候，调用构造函数，对其进行值的写入；而所谓的<strong>赋值</strong>，则是使用运算符“=”修改对象的值。</p>
+</blockquote>
+<p>ok, 问题解决，其实这里有好多想讨论的问题比如<code>extern</code>和<code>static</code>，每一个东西都可以单拎出来说好多东西 hhhh，anyway 我不想把博客搞的是说茴香豆的茴有几种写法，那是 c<ins>标准去干的事情，这里只是说出我目前对该问题的看法或者一种对于知识的记忆回顾，说不定下一个 c</ins>标准就又变了呢 hhhhh。</p>
+<p>关注底层关注实现原理，也就是老生常谈的<code>编译原理</code>，<code>计算机组成</code>，<code>计算机网络</code>准没错。技术会变，底层知识很难去再另立门派。anyway 下一期我很想去回顾一下基础的流程比如<code>预处理</code>，<code>编译</code>，<code>汇编</code>最后 <code>linking</code> 这一整套流程，我很想去用 <code>helloWorld</code> 或者其他程序的完整运行来说说 c++到底在编译器层面在干什么，bye 下一期再见~</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/09/hexo-md/" rel="prev" title="hexo博客搭建">
+                  <i class="fa fa-chevron-left"></i> hexo博客搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">star428</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"star428","repo":"star428.github.io","client_id":"f65f75f2c8a7ed10e7a0","client_secret":"b1ca52b255139821d3f3bd1abe01c6b5e59d390c","admin_user":"star428","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"8c8d97e2fd4ae2ce372ab1c5ca376658"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>c++ 中声明（Declare）与定义（define）</title>
+    <url>/2023/01/10/cplus-declare/</url>
+    <content><![CDATA[<p>Hi！what’s up guys!😃 终于结束了网站搭建，哦虽然新增了许多新功能比如上面这个笑脸哈哈哈哈哈。这篇文章简要讨论下 c++或者 c 语言中一个很有趣的问题，什么是声明（declare）或者什么是定义（define）？</p>
+<span id="more"></span>
+<h2 id="c-中声明（Declare）与定义（define）">c++中声明（Declare）与定义（define）</h2>
+<p>有些想法比如哦，我写出一些变量或者函数或者类的形式,我不给他们给出赋值或者实际的一些定义（这里就给出定义了哈哈哈哈哈很好理解的名词），比如下面：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a; \\ define</span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> a; \\ <span class="function">declare</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">addInt</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>; \\ declare</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>; \\declare</span><br></pre></td></tr></table></figure>
+<p>anyway,里面有一些答案是我们可能以前理解的不对的，啊<code>int a</code>怎么能是<code>define</code>捏，当然这些都和编译器有关系，定义就比较好看出来了就不列举了。</p>
+<p>其实说到 declare 和 define，其实还有几个词赋值和初始化我们也常听到。当然有这些问题都是因为<code>c</code>或<code>c++</code>都是编译型语言，区别于解释型语言那么他们都需要<strong>编译</strong>，那么哦，编译，那么这些问题就藏在<strong>编译原理</strong>中，就应该在<strong>编译器的输出</strong>上。</p>
+<p>那么我们分这几个来讨论：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>为什么需要声明（declare）和定义（define）</p>
+</li>
+<li class="lvl-2">
+<p>声明，定义，初始化，赋值</p>
+</li>
+</ul>
+<h3 id="为什么需要声明（declare）和定义（define）">为什么需要声明（declare）和定义（define）</h3>
+<p>当然这部分内容不是我写的 hhhh，看到有一篇很好的知乎回答（<a href="https://www.zhihu.com/question/27639400">变量的声明、定义、赋值和初始化有什么区别？</a>）。这里只摘录出关键信息。</p>
+<p>所有程序均是文件，程序员选择文件去编写程序。</p>
+<p>人和文件要到达机器那边，那么需要编译器这座桥梁。</p>
+<p>但是大型的程序会被组织成多个文件，文件一多便给编译带来难题。文件要最终翻译成程序（机器码 01），但是这些文件的数目会很多也会很少。</p>
+<p>代码是组织在多个文件中的，编译器为了解决这个问题，很自然的提出了两个概念：</p>
+<p>声明：<code>Declarations</code>定义：<code>·Definitions</code></p>
+<blockquote>
+<p>一个变量或者函数在内存中只能存在一份，所以在代码中它只能在一个地方<strong>登场</strong>！<strong>这就是定义</strong></p>
+</blockquote>
+<blockquote>
+<p>而这个变量或者函数可能被多个文件使用，在每个文件中都要登场，也就是每个文件中都要被定义，怎么解决这个内存浪费的矛盾呢，<strong>这就是声明存在的意义</strong></p>
+</blockquote>
+<p>这里其实也关乎到编译原理的相关知识，从<code>预处理</code>到<code>编译</code>到<code>汇编</code>(有时候统称为 <code>compiler</code>过程，直接一步到位到机器码了 hhhhhhh)最后到 <code>linking</code> 这一系列的过程，anyway 这些我们不讨论了 hhhhhh（说实话就我这水平也谈论不了这个只能谈论些简单的东西哈哈哈哈哈，这些东西过于专业需要请编译器专家来谈谈），有时候你会非常想知道这些东西是怎么实现的，你了解这些东西的深度也是螺旋上升的一种状态，当然最终不会彻底了解的，能说服自己就好。</p>
+<h4 id="声明，定义，初始化，赋值">声明，定义，初始化，赋值</h4>
+<p>还是这篇文章内容（<a href="https://www.zhihu.com/question/27639400">变量的声明、定义、赋值和初始化有什么区别？</a>），我们通过编译器输出和相关示例来简单说说什么是<s>快乐星球</s>声明（declare）（当然动词名词你随意使用 hhhhhh）</p>
+<h5 id="声明">声明</h5>
+<p>这里首先给出我的一般 c++编写用的方式，我一般的开发使用<code>vscode</code> + <code>gcc</code> + <code>gdb</code>,大工程就使用<code>cmake</code>辽（还在学还在学别骂了），先看第一个示例</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  a = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>OK,大家都知道这段代码绝壁运行不起来，看起来就像 python 的程序员重新开始回忆自己大一学过的 c 或者 c++知识但是忘记相关语法一样，送佛送到西，必须碰一下编译器这个南墙：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ g++ Main.cpp -o main</span><br><span class="line"></span><br><span class="line">Main.cpp: In <span class="keyword">function</span> ‘int main()’:</span><br><span class="line">Main.cpp:3:3: error: ‘a’ was not declared <span class="keyword">in</span> this scope</span><br><span class="line">    3 |   a = 10;</span><br><span class="line">      |   ^</span><br></pre></td></tr></table></figure>
+<p>好翻译一下，未在此范围内声明，这里有两个我们想注意的点，第一个**<em>此范围</em>**，很可怕吗，是的很可怕。这里提到的其实声明范围，好想了解的可以看这篇 Microsoft 的文章（<a href="https://learn.microsoft.com/zh-cn/cpp/cpp/declarations-and-definitions-cpp?view=msvc-170">declare and define</a>）。</p>
+<p>第二点就是我们关注的声明了，所以声明我们怎么用一句话来简单说说让人彻底理解呢？（可能也确实得自己悟 hhhh）</p>
+<blockquote>
+<p>声明：是指出存储类型，并给存储单元指定名称。</p>
+</blockquote>
+<p>ok 结束，这里辅佐一些自己理解 hhhh，之前我们讨论过为什么要有声明和定义，那么 c 或者 c++其实它的函数都会定义参数形参类型，也有返回类型，那么其实对于一个函数而言怎么实现的，我们可以不知道，但是这个函数干什么，我们看了函数这个头我们就可以知道，这是其他语言（就是你！别看别人了 python）所不能比拟的。</p>
+<h5 id="定义">定义</h5>
+<p>看这段代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> a;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$ g++ Main.cpp -o main</span><br><span class="line"></span><br><span class="line">/usr/bin/ld: /tmp/ccSLBdnB.o: <span class="keyword">in</span> <span class="keyword">function</span> `main<span class="string">&#x27;:</span></span><br><span class="line"><span class="string">Main.cpp:(.text+0xa): undefined reference to `a&#x27;</span></span><br><span class="line">collect2: error: ld returned 1 <span class="built_in">exit</span> status</span><br></pre></td></tr></table></figure>
+<p>这里又要提到<code>extern</code>，首先我不想过多解释，<code>c++</code>有一个不好处就是许多东西要记得很多但是其实很少会用到（但是<code>extern</code>会频繁用到 hhhh），我们不想去讨论茴香豆的茴有几种写法，这没有意义，我们只是简单解释一下这里的 <code>extern</code></p>
+<p>这里的 extern 就是表示，哦我这个东西现在就是声明，定义得去其他地方找，（无论在本文件或者其他文件中找，在 linking 的时候）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> a;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a; <span class="comment">// 在本文件中一定义，也行，这句就是定义</span></span><br></pre></td></tr></table></figure>
+<p>当然你编译的时候只编译一个文件，所以编译器会告诉你，骗子外面哪里有这个的定义。</p>
+<p>ok 代码解释结束，我们看一下报错，翻译一下就是，a 的引用竟然没有定义，哦又要提到引用和指针了，这里和我们说的引用和指针不同，这里就是再说 a 要引用一个内存单元，但是这个内存单元没有定义（为什么要引用别的内存单元不自己分配？因为你使用了 extern 关键字）</p>
+<p>ok，一句话解释什么是定义：</p>
+<blockquote>
+<p>定义：是分配内存空间，还可为变量指定初始值。</p>
+</blockquote>
+<p>一般我们关注的都是指定初始值，其实这个还有一种情况就是分配内存空间，这就很好解释为什么<code>int a</code>也是定义，而不是声明</p>
+<h5 id="赋值和初始化">赋值和初始化</h5>
+<p>这个问题，非常复杂，简单的说，我不太会。不过别急，请参考这篇博文 hhhhh（<a href="https://blog.csdn.net/qq_42518941/article/details/112326108">你真的理解 c++中初始化和赋值这两个概念吗？</a>）挑重点的说，注意下面这个描述</p>
+<blockquote>
+<p>在 c++中，我们常用的 int、float 这些基本数据类型，其实就是语言开发者编写的一个个复杂的类。所谓对象的<strong>初始化</strong>，就是在创建这个对象的时候，调用构造函数，对其进行值的写入；而所谓的<strong>赋值</strong>，则是使用运算符“=”修改对象的值。</p>
+</blockquote>
+<p>ok, 问题解决，其实这里有好多想讨论的问题比如<code>extern</code>和<code>static</code>，每一个东西都可以单拎出来说好多东西 hhhh，anyway 我不想把博客搞的是说茴香豆的茴有几种写法，那是 c<ins>标准去干的事情，这里只是说出我目前对该问题的看法或者一种对于知识的记忆回顾，说不定下一个 c</ins>标准就又变了呢 hhhhh。</p>
+<p>关注底层关注实现原理，也就是老生常谈的<code>编译原理</code>，<code>计算机组成</code>，<code>计算机网络</code>准没错。技术会变，底层知识很难去再另立门派。anyway 下一期我很想去回顾一下基础的流程比如<code>预处理</code>，<code>编译</code>，<code>汇编</code>最后 <code>linking</code> 这一整套流程，我很想去用 <code>helloWorld</code> 或者其他程序的完整运行来说说 c++到底在编译器层面在干什么，bye 下一期再见~</p>
+]]></content>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/01/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post.</p>
+<span id="more"></span>
+<p>Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>hexo博客搭建</title>
     <url>/2023/01/09/hexo-md/</url>
     <content><![CDATA[<p>最近在学习 c++（其实是复习），总想着要把学过的某些东西稍加记忆，要不然每次查询网页速度实在堪忧，思来想去还是得有一个自己的博客记录一下重要的技能，以便下次查阅。</p>
@@ -42,26 +135,5 @@ over，下一篇文章见~</p>
       <tags>
         <tag>hexo</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/01/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post.</p>
-<span id="more"></span>
-<p>Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
